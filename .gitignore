@@ -1,0 +1,5 @@
+corona-env/
+credentials.csv
+api-key.csv
+__pycache__/
+.env
