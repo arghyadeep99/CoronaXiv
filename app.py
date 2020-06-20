@@ -20,27 +20,33 @@ def home():
 @app.route("/search", methods = ['POST'])
 def search():
     if request.method == 'POST':
-      query = request.form['search']
-    data = client.search(engine_name, query, {})
-    return jsonify({'data': data})
-    
-
-# New Index Route
-@app.route("/createindex")
-def create_index():
-    request_body = {
-        "settings": {
-            "number_of_shards": 5,
-            "number_of_replicas": 1
-        },
-        'mappings': {
-            "properties": {
-              "title_x":   { "type": "text"  }     
+        query = request.form['search']
+        value = request.form['value']
+        search_param = {
+            'query': {
+                'match': {
+                    query: value
+                }
             }
         }
-    }
-    es.indices.create(index='movie_index', body=request_body)
-    return jsonify({ 'result': 'created' })
+        data = es.search(index="papers", body=search_param)
+        print(data)
+        return jsonify({'data': data})
+
+@app.route("/title", methods = ['POST'])
+def title_search():
+    if request.method == 'POST':
+        query = request.form['search']
+        search_param = {
+            'query': {
+                'match': {
+                    'title': query
+                }
+            }
+        }
+        data = es.search(index="papers", body=search_param)
+        print(data)
+        return jsonify({'data': data})
 
 if __name__ == "__main__":
     app.run(debug=False)

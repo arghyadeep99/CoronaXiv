@@ -1,6 +1,6 @@
 import csv
 from os.path import abspath, join, dirname, exists
-from os.environ import get
+# from os.environ import get
 import tqdm
 import urllib3
 from elasticsearch import Elasticsearch
@@ -57,8 +57,9 @@ def main():
     print(f'{number_of_docs} loaded.....')
 
     client = Elasticsearch(
-        cloud_id=get("ELASTIC_CLOUD_ID"),
-        http_auth=(get('ELASTIC_USERNAME'), get("ELASTIC_PASSWORD")),
+        
+        cloud_id='',
+        http_auth=('', ''),          
     )
     print("Creating an index...")
     index_name = "papers"
