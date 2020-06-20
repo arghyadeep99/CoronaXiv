@@ -1,0 +1,48 @@
+name: Deploy App to Heroku
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  vue-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: npm install and build Vue app
+        run: |
+          cd frontend && npm install
+          cd frontend && npm run build
+      - uses: actions/upload-artifact@master
+        with:
+          name: Upload Vue static files
+          path: cd frontend && dist/
+
+  flask-build:
+    needs: vue-build
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/download-artifact@master
+      with: 
+        name: Download Vue static files
+        path: dist
+    - name: Setup Flask App
+      run: |
+        pip install -r requirements.txt
+      env:
+        FLASK_APP=main.py
+        FLASK_ENV=production
+  deploy-heroku:
+    needs: vue-build
+    needs: flask-build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: akhileshns/heroku-deploy@v3.0.5 # This is the action
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: "corona-xiv" #Must be unique in Heroku
+          heroku_email: ${{secrets.HEROKU_EMAIL}}

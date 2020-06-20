@@ -4,7 +4,8 @@ from elasticsearch import Elasticsearch
 import os
 import json
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder = "./dist/static",
+            template_folder = "./dist")
 
 es = Elasticsearch(
     cloud_id = os.environ.get('ELASTIC_CLOUD_ID'),
@@ -13,8 +14,8 @@ es = Elasticsearch(
 
 @app.route("/")
 def home():
-    data = client.search(engine_name, "", {})
-    return render_template("home.html" , data=data)
+    # data = client.search(engine_name, "", {})
+    return render_template("home.html")
 
 @app.route("/search", methods = ['POST'])
 def search():
