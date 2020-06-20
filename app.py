@@ -23,6 +23,7 @@ def search():
       query = request.form['search']
     data = client.search(engine_name, query, {})
     return jsonify({'data': data})
+    
 
 # New Index Route
 @app.route("/createindex")
