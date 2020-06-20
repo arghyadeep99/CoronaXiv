@@ -3,3 +3,4 @@ credentials.csv
 api-key.csv
 __pycache__/
 .env
+cord-19-dataset/
