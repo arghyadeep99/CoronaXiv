@@ -32,7 +32,7 @@ jobs:
     - name: Setup Flask App
       run: |
         pip install -r requirements.txt
-      env:
+      env: |
         FLASK_APP=main.py
         FLASK_ENV=production
   deploy-heroku:
