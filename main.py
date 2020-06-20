@@ -4,8 +4,8 @@ from elasticsearch import Elasticsearch
 import os
 import json
 
-app = Flask(__name__, static_folder = "./dist/static",
-            template_folder = "./dist")
+app = Flask(__name__, static_folder = "./frontend/dist/static",
+            template_folder = "./frontend/dist")
 
 es = Elasticsearch(
     cloud_id = os.environ.get('ELASTIC_CLOUD_ID'),

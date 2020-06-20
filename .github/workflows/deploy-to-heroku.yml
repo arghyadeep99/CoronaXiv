@@ -7,31 +7,6 @@ on:
     branches: [ master ]
 
 jobs:
-  vue-build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: npm install and build Vue app
-        run: |
-          cd frontend && npm install
-          cd frontend && npm run build
-      - uses: actions/upload-artifact@master
-        with:
-          name: Upload Vue static files
-          path: cd frontend && dist/
-
-  flask-build:
-    needs: vue-build
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - uses: actions/download-artifact@master
-      with: 
-        name: Download Vue static files
-        path: dist
-    - name: Setup Flask App
-      run: pip install -r requirements.txt
-  
   deploy-heroku:
     runs-on: ubuntu-latest
     steps:
