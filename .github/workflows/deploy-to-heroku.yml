@@ -30,14 +30,12 @@ jobs:
         name: Download Vue static files
         path: dist
     - name: Setup Flask App
-      run: |
-        pip install -r requirements.txt
-      env: |
-        FLASK_APP=main.py
-        FLASK_ENV=production
+      run: pip install -r requirements.txt
+  
   deploy-heroku:
-    needs: vue-build
-    needs: flask-build
+    needs: |
+      vue-build
+      flask-build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
