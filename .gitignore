@@ -4,3 +4,5 @@ api-key.csv
 __pycache__/
 .env
 cord-19-dataset/
+myfile.json
+metadata.csv

@@ -1,4 +1,5 @@
 import csv
+import sys
 from os.path import abspath, join, dirname, exists
 # from os.environ import get
 import tqdm
@@ -6,8 +7,9 @@ import urllib3
 from elasticsearch import Elasticsearch
 from elasticsearch.helpers import streaming_bulk
 
-DATASET_PATH = join(dirname(abspath(__file__)), "papers.csv")
-CHUNK_SIZE = 16384
+DATASET_PATH = join(dirname(abspath(__file__)), "metadata.csv")
+# CHUNK_SIZE = 16384
+csv.field_size_limit(1000000000)
 
 def create_index(client, index_name):
     """Creates an index in Elasticsearch if one isn't already there."""
@@ -18,9 +20,12 @@ def create_index(client, index_name):
             "mappings": {
                 "properties": {
                     "paper_id": {"type": "keyword"},
-                    "title": {"type": "text"},
                     "abstract": {"type": "text"},
-                    "author": {"type": "text"},
+                    "authors": {"type": "text"},
+                    "title": {"type": "text"},
+                    "journal": {"type": "text"},
+                    "publish_time": {"type": "text"},
+                    "doi": {"type": "text"}
                 }
             },
         },
@@ -41,9 +46,12 @@ def generate_actions():
             doc = {
                 "_id": row["paper_id"],
                 "paper_id": row["paper_id"],
-                "title": row["title"],
                 "abstract": row["abstract"],
                 "authors": row["authors"],
+                "title": row["title"],
+                "journal": row["journal"],
+                "publish_time": row["publish_time"],
+                "doi": row["doi"]
             }
 
             yield doc
@@ -57,7 +65,7 @@ def main():
     print(f'{number_of_docs} loaded.....')
 
     client = Elasticsearch(
-        
+
         cloud_id='',
         http_auth=('', ''),          
     )

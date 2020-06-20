@@ -14,7 +14,18 @@ es = Elasticsearch(
 # Index Route
 @app.route("/")
 def home():
-    return jsonify({ 'msg': 'Welcome' })
+    title = request.args.get('title')
+    print(title)
+    search_param = {
+        'query': {
+            'match': {
+                'title': title
+            }
+        }
+    }
+    data = es.search(index="papers", body=search_param)
+    # print(data)
+    return jsonify({ 'data': data })
 
 # Search Route
 @app.route("/search", methods = ['POST'])
