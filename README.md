@@ -64,7 +64,7 @@ In the current scenario, one would perform Google search in order to look for so
 
 ### Tech Stack of this Project:
 
-* Frontend: Vue.js
+* Frontend: Vue.js - [Frontend can be found here](https://github.com/neelansh15/CoronaXiv) 
 * Backend: Python3
 * Framework: Flask, PyTorch
 * Machine Learning Model: K-means Clustering, Covid-BERT
