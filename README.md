@@ -46,11 +46,20 @@ In the current scenario, one would perform Google search in order to look for so
 <h3 align="center">CoronaXiv as a webapp:</h3>
 
 <div align="center">
-<h4 align="center">Home Page</h4>
-<img src="./screenshots/ss1.png" width=900px/>
+<h4 align="center">Example</h4>
+<img src="./screenshots/ss1.jpeg" width=900px/>
 <br>
 </div>
 
+<div align="center">
+<img src="./screenshots/ss2.jpeg" width=900px/>
+<br>
+</div>
+
+<div align="center">
+<img src="./screenshots/ss3.jpeg" width=900px/>
+<br>
+</div>
 ---
 
 
