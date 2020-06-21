@@ -7,7 +7,7 @@ import urllib3
 from elasticsearch import Elasticsearch
 from elasticsearch.helpers import streaming_bulk
 
-DATASET_PATH = join(dirname(abspath(__file__)), "metadata.csv")
+DATASET_PATH = join(dirname(abspath(__file__)), "metadata.csv") # Dataset
 # CHUNK_SIZE = 16384
 csv.field_size_limit(1000000000)
 
@@ -30,7 +30,6 @@ def create_index(client, index_name):
                     "source_x": {"type": "text"},
                     "url": {"type": "text"},
                     "is_covid": {"type": "boolean"},
-                    "preproc_body_text": {"type": "text"},
                     "score": {"type": "double"},
                     "readers_count": {"type": "integer"},
                     "cited_by_posts_count": {"type": "integer"},
@@ -40,6 +39,8 @@ def create_index(client, index_name):
                     "subjects": {"type": "keyword"},
                     "peer_reviewed": {"type": "text"},
                     "excerpt": {"type": "text"},
+                    "x1": {"type": "double"},
+                    "x2": {"type": "double"},
                 }
             },
         },
@@ -70,7 +71,6 @@ def generate_actions():
                 "source_x": row["source_x"],
                 "url": row['url'],
                 "is_covid": row['is_covid'],
-                "preproc_body_text": row['preproc_body_text'],
                 "score": row['score'],
                 "readers_count": row['readers_count'],
                 "cited_by_posts_count": row['cited_by_posts_count'],
@@ -80,6 +80,8 @@ def generate_actions():
                 "subjects": row['subjects'],
                 "peer_reviewed": row['peer_reviewed'],
                 "excerpt": row['excerpt'],
+                "x1": row['x1'],
+                "x2": row['x2'],
             }
 
             yield doc
@@ -92,10 +94,10 @@ def main():
         number_of_docs = sum([1 for _ in f]) - 1
     print(f'{number_of_docs} loaded.....')
 
+    # Insert your credentials
     client = Elasticsearch(
-        
         cloud_id='',
-        http_auth=('', ''),          
+        http_auth=('', ''),  # Username and password of elastic search        
     )
     print("Creating an index...")
     index_name = "papers"

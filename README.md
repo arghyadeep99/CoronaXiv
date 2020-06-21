@@ -73,11 +73,13 @@ In the current scenario, one would perform Google search in order to look for so
 ### To run the project:
 
 * [Fork](https://github.com/arghyadeep99/CoronaXiv) this Repository.
+* Copy .env-example as .env
+* Update .env Environment Variables
 * Change into he directory in the terminal and run as:
-  -`pip3 install -r requirements.txt`
-  -`python3 manage.py runserver`
+  -`pip install -r requirements.txt`
+  -`flask run`
 * Open your web browser and enter the following URL:
-`localhost:8000`
+`localhost:5000`
 
 
 #### This project still has scope of development, so you can also contribute to this Project as follows:
