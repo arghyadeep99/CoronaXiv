@@ -1,10 +1,11 @@
 from flask import Flask, request, jsonify  
 from elasticsearch import Elasticsearch
-
+from flask_cors import CORS
 import os
 import json
 
 app = Flask(__name__)
+CORS(app)
 
 es = Elasticsearch(
     cloud_id = os.environ.get('ELASTIC_CLOUD_ID'),

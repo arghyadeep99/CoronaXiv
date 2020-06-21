@@ -21,11 +21,25 @@ def create_index(client, index_name):
                 "properties": {
                     "paper_id": {"type": "keyword"},
                     "abstract": {"type": "text"},
-                    "authors": {"type": "text"},
+                    "body_text": {"type": "text"},
+                    "authors": {"type": "keyword"},
                     "title": {"type": "text"},
-                    "journal": {"type": "text"},
+                    "journal": {"type": "keyword"},
                     "publish_time": {"type": "text"},
-                    "doi": {"type": "text"}
+                    "doi": {"type": "text"},
+                    "source_x": {"type": "text"},
+                    "url": {"type": "text"},
+                    "is_covid": {"type": "boolean"},
+                    "preproc_body_text": {"type": "text"},
+                    "score": {"type": "double"},
+                    "readers_count": {"type": "integer"},
+                    "cited_by_posts_count": {"type": "integer"},
+                    "cited_by_tweeters_count": {"type": "integer"},
+                    "cited_by_fbwalls_count": {"type": "integer"},
+                    "cited_by_wikipedia_count": {"type": "integer"},
+                    "subjects": {"type": "keyword"},
+                    "peer_reviewed": {"type": "text"},
+                    "excerpt": {"type": "text"},
                 }
             },
         },
@@ -47,11 +61,25 @@ def generate_actions():
                 "_id": row["paper_id"],
                 "paper_id": row["paper_id"],
                 "abstract": row["abstract"],
+                "body_text": row["body_text"],
                 "authors": row["authors"],
                 "title": row["title"],
                 "journal": row["journal"],
                 "publish_time": row["publish_time"],
-                "doi": row["doi"]
+                "doi": row["doi"],
+                "source_x": row["source_x"],
+                "url": row['url'],
+                "is_covid": row['is_covid'],
+                "preproc_body_text": row['preproc_body_text'],
+                "score": row['score'],
+                "readers_count": row['readers_count'],
+                "cited_by_posts_count": row['cited_by_posts_count'],
+                "cited_by_tweeters_count": row['cited_by_tweeters_count'],
+                "cited_by_fbwalls_count": row['cited_by_fbwalls_count'],
+                "cited_by_wikipedia_count": row['cited_by_wikipedia_count'],
+                "subjects": row['subjects'],
+                "peer_reviewed": row['peer_reviewed'],
+                "excerpt": row['excerpt'],
             }
 
             yield doc
@@ -65,7 +93,7 @@ def main():
     print(f'{number_of_docs} loaded.....')
 
     client = Elasticsearch(
-
+        
         cloud_id='',
         http_auth=('', ''),          
     )
