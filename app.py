@@ -18,6 +18,7 @@ def home():
     title = request.args.get('title')
     print(title)
     search_param = {
+        'size': '10000',
         'query': {
             'match': {
                 'title': title
