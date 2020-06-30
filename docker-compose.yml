@@ -1,0 +1,28 @@
+version: "3"
+
+services:
+  backend:
+    build: ./backend
+    container_name: backend
+    restart: always
+    volumes:
+      - ./backend/:/app
+    expose:
+      - 9000
+    env_file:
+    - .env
+
+  frontend:
+    build: ./frontend
+    container_name: frontend
+    restart: always
+    expose:
+      - 80
+
+  nginx:
+    build: ./nginx
+    container_name: nginx
+    restart: always
+    ports:
+      - "8000:8000"
+      - "8001:80"
