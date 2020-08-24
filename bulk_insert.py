@@ -49,7 +49,7 @@ def create_index(client, index_name):
             },
         },
         ignore=400,
-        timeout=30
+        timeout=300
     )
 
 
@@ -104,8 +104,9 @@ def main():
 
     # Insert your credentials
     client = Elasticsearch(
-        cloud_id='coronaxiv:YXNpYS1zb3V0aDEuZ2NwLmVsYXN0aWMtY2xvdWQuY29tJDY0N2I3OTdjMDAyMzQyNThhZWY2YTk5NzcwY2YwNWEzJDhlYWExZWU1MmUwMjQ3MTJhYmFjZTA0YjBiOThhMTMz',
-        http_auth=('elastic', 'Tu53Puq0AhDVSoxuQ968FXNN'),  # Username and password of elastic search        
+        cloud_id='coronaxiv:YXNpYS1zb3V0aDEuZ2NwLmVsYXN0aWMtY2xvdWQuY29tJGNlZTVkOWQ3OWUxMjRjNDE5NTI0YjVlYWYzNjJlZTc2JGEyMzRmMjgyYjliYTRkMzU4NmE2OGRmNDQ2YmQzMzEw',
+        http_auth=('elastic', 'RuAXbFdIGOw2Is2hMndkh8yk'),  # Username and password of elastic search        
+        timeout=60
     )
     print("Creating an index...")
     index_name = "papers"

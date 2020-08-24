@@ -5,7 +5,6 @@ __pycache__/
 .env
 cord-19-dataset/
 myfile.json
-metadata.csv
 old_metadata.csv
 tsne_coordinates.csv
 odl_metadata.csv
