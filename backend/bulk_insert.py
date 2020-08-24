@@ -42,9 +42,7 @@ def create_index(client, index_name):
                     "x1": {"type": "double"},
                     "x2": {"type": "double"},
                     "cluster": {"type": "integer"},
-                    "keywords": {"type": "keyword"},
-                    "h_index": {"type": "integer"},
-                    "cluster_name": {"type":"text"}
+                    "keywords": {"type": "keyword"}
                 }
             },
         },
@@ -87,9 +85,7 @@ def generate_actions():
                 "x1": row['x1'],
                 "x2": row['x2'],
                 "cluster": row['cluster'],
-                "keywords": row['keywords'],
-                "h_index": row['h_index'],
-                "cluster_name": row['cluster_name']
+                "keywords": row['keywords']
             }
 
             yield doc
@@ -105,7 +101,7 @@ def main():
     # Insert your credentials
     client = Elasticsearch(
         cloud_id='coronaxiv:YXNpYS1zb3V0aDEuZ2NwLmVsYXN0aWMtY2xvdWQuY29tJDY0N2I3OTdjMDAyMzQyNThhZWY2YTk5NzcwY2YwNWEzJDhlYWExZWU1MmUwMjQ3MTJhYmFjZTA0YjBiOThhMTMz',
-        http_auth=('elastic', 'Tu53Puq0AhDVSoxuQ968FXNN'),  # Username and password of elastic search        
+        http_auth=('elastic', 'fcChGxw6NiYat5VbatEzNVvJ'),  # Username and password of elastic search        
     )
     print("Creating an index...")
     index_name = "papers"

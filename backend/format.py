@@ -46,16 +46,4 @@ def main():
             csv_writer.writerow([paper_id, title, abstract, authors, file['doi']])      
             count += 1
 
-# main()
-def see_metadata():
-    with open('metadata.csv', 'r', encoding="utf8") as csv_file:
-        csv_reader = csv.reader(csv_file, delimiter=",")
-        # csv_reader.readline()
-        count = 0
-        for row in csv_reader:
-        if count > 2: break
-        print(row)        
-        print(f'Count - {count}')
-        count += 1
-
-see_metadata()
+main()
