@@ -92,7 +92,7 @@ In the current scenario, one would perform Google search in order to look for so
 
 
 #### This project still has scope of development, so you can also contribute to this Project as follows:
-* [Fork](https://github.com/nachiketbhuta/exsports-analytics) this Repository.
+* [Fork](https://github.com/arghyadeep99/CoronaXiv) this Repository.
 * Clone your Fork on a different branch:
 	* `git clone -b <name-of-branch> https://github.com/arghyadeep99/CoronaXiv.git`
 * After adding any feature:
