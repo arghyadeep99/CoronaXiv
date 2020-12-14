@@ -47,17 +47,17 @@ In the current scenario, one would perform Google search in order to look for so
 
 <div align="center">
 <h4 align="center">Example</h4>
-<img src="./screenshots/ss1.jpeg" width=900px/>
+<img src="./screenshots/ss1.png" width=900px/>
 <br>
 </div>
 
 <div align="center">
-<img src="./screenshots/ss2.jpeg" width=900px/>
+<img src="./screenshots/ss2.png" width=900px/>
 <br>
 </div>
 
 <div align="center">
-<img src="./screenshots/ss3.jpeg" width=900px/>
+<img src="./screenshots/ss3.png" width=900px/>
 <br>
 </div>
 ---
@@ -75,18 +75,38 @@ In the current scenario, one would perform Google search in order to look for so
 
 * Frontend: Vue.js - [Frontend can be found here](https://github.com/neelansh15/CoronaXiv) 
 * Backend: Python3
-* Framework: Flask, PyTorch
+* Framework: Flask, PyTorch, ElasticSearch, Kibana
 * Machine Learning Model: K-means Clustering, Covid-BERT
 * Libraries: Available in [requirements.txt](https://github.com/arghyadeep99/CoronaXiv/blob/master/requirements.txt).
 
 ### To run the project:
 
 * [Fork](https://github.com/arghyadeep99/CoronaXiv) this Repository.
+
+### Setting up ELK Stack (Elastic Search, Kibana, Logstash)
+1. Make sure you have Java installed on your computer.
+2. Download ElasticSearch from [here](https://www.elastic.co/downloads/elasticsearch)
+3. Download Kibana from [here](https://www.elastic.co/downloads/kibana)
+4. Download Logstash from [here](https://www.elastic.co/downloads/logstash)
+5. Unzip all the 3 files downloaded above and add the path for each bin folder in environment variables.
+6. Download the dataset from [here](https://drive.google.com/open?id=1ss51VW4Vn_ic7_XiT0pFhe3WJJZGGdq6&authuser=nachiket.bhuta%40somaiya.edu&usp=drive_fs) and make sure it is in the root directory.
+7. Run ```python bulk_insert.py``` on terminal and wait it till finishes.
+
+### Setting up the Vue Application
+1. Navigate into frontend.
+2. Run ```npm install ``` for installing dependencies.
+3. For compiles and hot-reloads for development, run ```npm run serve```.
+4. For Compiles and minifies for production, run ```npm run build```
+5. For Lints and fixes files, run ```npm run lint```
+
+### Setting up Flask server
 * Copy .env-example as .env
 * Update .env Environment Variables
+* Create a virtual environment and activate the environment.
 * Change into he directory in the terminal and run as:
   -`pip install -r requirements.txt`
   -`flask run`
+* Make sure you're running elasticsearch while running the flask server.
 * Open your web browser and enter the following URL:
 `localhost:5000`
 

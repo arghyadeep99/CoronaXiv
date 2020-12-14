@@ -7,10 +7,11 @@ import json
 app = Flask(__name__)
 CORS(app)
 
-es = Elasticsearch(
-    cloud_id = os.environ.get('ELASTIC_CLOUD_ID'),
-    http_auth = (os.environ.get('ELASTIC_USERNAME'), os.environ.get("ELASTIC_PASSWORD"))
-)
+# es = Elasticsearch(
+#     cloud_id = os.environ.get('ELASTIC_CLOUD_ID'),
+#     http_auth = (os.environ.get('ELASTIC_USERNAME'), os.environ.get("ELASTIC_PASSWORD"))
+# )
+es = Elasticsearch([{'host': 'localhost', 'port': 9200, 'timeout': 200}])
 
 # Index Route
 @app.route("/")

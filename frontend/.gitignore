@@ -1,18 +1,5 @@
-corona-env/
-credentials.csv
-api-key.csv
-__pycache__/
-.env
-cord-19-dataset/
-myfile.json
-old_metadata.csv
-metadata.csv
-tsne_coordinates.csv
-odl_metadata.csv
-
-
 .DS_Store
-**/**/node_modules
+node_modules
 /dist
 
 # local env files

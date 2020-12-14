@@ -94,8 +94,12 @@ def generate_actions():
 
             yield doc
 
+def remove_index(client, index_name):
+    client.indices.delete(index_name)
+
 
 def main():
+    
     print("Loading dataset...")
     number_of_docs = 0
     with open(DATASET_PATH, encoding="utf8") as f:
@@ -103,11 +107,15 @@ def main():
     print(f'{number_of_docs} loaded.....')
 
     # Insert your credentials
-    client = Elasticsearch(
-        cloud_id='coronaxiv:YXNpYS1zb3V0aDEuZ2NwLmVsYXN0aWMtY2xvdWQuY29tJGNlZTVkOWQ3OWUxMjRjNDE5NTI0YjVlYWYzNjJlZTc2JGEyMzRmMjgyYjliYTRkMzU4NmE2OGRmNDQ2YmQzMzEw',
-        http_auth=('elastic', 'RuAXbFdIGOw2Is2hMndkh8yk'),  # Username and password of elastic search        
-        timeout=60
-    )
+    # client = Elasticsearch(
+    #     cloud_id='coronaxiv:YXNpYS1zb3V0aDEuZ2NwLmVsYXN0aWMtY2xvdWQuY29tJGNlZTVkOWQ3OWUxMjRjNDE5NTI0YjVlYWYzNjJlZTc2JGEyMzRmMjgyYjliYTRkMzU4NmE2OGRmNDQ2YmQzMzEw',
+    #     http_auth=('elastic', 'RuAXbFdIGOw2Is2hMndkh8yk'),  # Username and password of elastic search        
+    #     timeout=60
+    # )
+    client = Elasticsearch([{'host': 'localhost', 'port': 9200, 'timeout': 200}])
+    # print("Removing index...")
+    # remove_index(client, "papers")
+    # print("Index Removed...")
     print("Creating an index...")
     index_name = "papers"
     create_index(client, index_name)

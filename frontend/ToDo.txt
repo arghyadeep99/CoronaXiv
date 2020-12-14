@@ -1,0 +1,13 @@
+Also, set condition as 
+If abstract available, toh abstract, else excerpt. 
+Because excerpts end abruptly as incomplete sentence.
+
+Filters:
+1) Peer Reviewed DONE
+2) is_covid DONE
+3) Date (kept for last) In progress
+4) H-index (range slider)
+
+Add another section in home page about the product and the team
+
+Remove footer in Home page when input has focus, as it hinders mobile experience --DONE
